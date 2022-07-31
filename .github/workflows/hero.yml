@@ -18,6 +18,7 @@ jobs:
             all_but_latest: true
             access_token: ${{ github.token }}
        - name: initialization
+         timeout-minutes: 1
          continue-on-error: true
          run: |
            git config --global user.name ${{ secrets.GIT_NAME }}
@@ -29,7 +30,7 @@ jobs:
          run: |
            git clone https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@${{ secrets.BOT_REPO }} hero
        - name: running hero server
-         timeout-minutes: 350
+         timeout-minutes: 358
          continue-on-error: true
          run: |
            sudo sh action.sh
